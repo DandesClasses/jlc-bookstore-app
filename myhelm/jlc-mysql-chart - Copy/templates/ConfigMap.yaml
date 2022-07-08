@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jlc-mysql-config-map
+  namespace: default
+data:
+  JLC_MYSQL_DATABASE: myjlcbs
+  JLC_MYSQL_HOST: jlc-mysql
+  JLC_MYSQL_PORT: "3306"
+  JLC_MYSQL_USER: srinivas
