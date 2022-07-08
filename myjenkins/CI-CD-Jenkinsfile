@@ -31,6 +31,7 @@ pipeline {
                  }                     
            }
         }
+            }
         
            stage('4. Deploy On K8S Cluster with Helm ') {
             steps {           
@@ -45,5 +46,5 @@ pipeline {
         
 	  }
     }
-}
+
 
