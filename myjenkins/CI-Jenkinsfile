@@ -6,6 +6,7 @@ pipeline {
     }
 
     stages {      
+    
         stage('1. Build the Bookstore Application') {
             steps { 
                     sh 'pwd'      
@@ -13,22 +14,23 @@ pipeline {
             }
         }
         
-        stage('2. Copy the Application War to myjlc-docker') {
+        stage('2. Copy the Application War to mydocker') {
            steps { 
                    sh 'pwd'
-                   sh 'cp -r target/*.war myjlc-docker'
+                   sh 'cp -r target/*.war mydocker'
            }
         }
          
-        stage('3. Build the docker image') {
+        stage('3. Build and Push docker image') {
            steps {
                script {         
-                 def customImage = docker.build('dandesclasses/myjlc-bookstore', "./myjlc-docker")
+                 def customImage = docker.build('dandesclasses/myjlc-bookstore', "./mydocker")
                  docker.withRegistry('https://registry-1.docker.io/v2/', 'mydockerhub') {
-                 customImage.push("5.0")
+                 customImage.push("5.1.0")
                  }                     
            }
         }
+        
 	  }
     }
 }
